@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-5.0.0-beta1-dist/css/bootstrap.css' %}">
+
+
+
+    {% block scripts %}
+    {% endblock scripts %}
+    <title>Report App | {% block title %} {% endblock title %}</title>
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="container mb-3 mt-3">
+    {% block content %}
+    {% endblock content %}
+</div>
+
+</body>
+</html>

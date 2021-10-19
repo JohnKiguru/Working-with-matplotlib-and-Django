@@ -1,0 +1,23 @@
+.invisible {
+    display: none;
+}
+.dz {
+    border-style: dashed;
+    border-radius: 5px;
+    border-color: #ddd;
+    transition: .5s;
+
+}
+.dz:hover {
+    background-color: #f5f5f5;
+}
+.avatar-sm {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.avatar-big {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
