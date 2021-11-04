@@ -7,15 +7,6 @@ from django.utils import timezone
 from sales.utils import generate_code
 
 
-class Product(models.Model):
-    name = models.CharField(max_length=120)
-    image = models.ImageField(upload_to='products')
-    price = models.FloatField(help_text='in Kenyan Shillings')
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return f"{self.name} - {self.created.strftime('%d/%m/%Y')}"
 class Customer(models.Model):
     name = models.CharField(max_length=120)
     logo = models.ImageField(upload_to='customers')
