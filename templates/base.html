@@ -5,15 +5,30 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap-5.0.0-beta1-dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
 
 
-    {% block scripts %}
-    {% endblock scripts %}
+
+
     <title>Report App | {% block title %} {% endblock title %}</title>
 </head>
 <body>
-{% include 'navbar.html' %}
+
+{% url 'sales' as sales_home %}
+{% url 'saleslist' as sales_list %}
+<div class="ui secondary  menu">
+    <a class="item"><img style="height:100px;width:100px;" src="{% static 'book.jpg' %}" alt=""></a>
+  <a href="{{sales_home}}" class=" {% if request.path == sales_home %} active item {% endif %} item">
+    Home
+  </a>
+
+
+
+</div>
+
 <div class="container mb-3 mt-3">
     {% block content %}
     {% endblock content %}
