@@ -1,7 +1,7 @@
 import pandas
 from django.shortcuts import render
 from django.views.generic import ListView
-
+from django.contrib import messages
 from .forms import SalesSearchForm
 from .models import *
 # Create your views here.
@@ -23,7 +23,6 @@ def sales(request):
         print(date_from, date_to, chart_type)
         sales_qs = Sale.objects.filter(created__date__lte=date_to, created__date__gte=date_from)
         
-
         if len(sales_qs) > 0:
             sales_df = pandas.DataFrame(sales_qs.values())
             print(sales_df)
@@ -32,26 +31,17 @@ def sales(request):
             sales_df.rename({'customer_id': 'customer', 'salesman_id': 'salesman', 'id': 'sales_id'}, axis=1,
                             inplace=True)
 
-
-
-
             chart = get_chart(chart_type, sales_df, results_by)
 
             sales_df = sales_df.to_html()
 
         else:
-            no_data = "Apparently...no data available"
+            messages.warning(request, "Apparently no data available...")
 
     context = {
         'search_form': search_form,
-
         'sales_df': sales_df,
-
         'chart': chart,
-        'no_data': no_data
-
+       
     }
     return render(request, 'sales.html',  context)
-class SalesListView( ListView):
-    model = Sale
-    template_name = 'saleslist.html'
