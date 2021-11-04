@@ -18,7 +18,6 @@
 <body>
 
 {% url 'sales' as sales_home %}
-{% url 'saleslist' as sales_list %}
 <div class="ui secondary  menu">
     <a class="item"><img style="height:100px;width:100px;" src="{% static 'book.jpg' %}" alt=""></a>
   <a href="{{sales_home}}" class=" {% if request.path == sales_home %} active item {% endif %} item">
